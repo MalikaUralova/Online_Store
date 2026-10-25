@@ -1,6 +1,6 @@
 @import"./mixin/button";
 @import"./variablals";
-@import"./mixin/center";
+@import"../scss/mixin/container";
 
 * {
     margin: 0;
@@ -8,12 +8,12 @@
     box-sizing: border-box;
 }
 
-
+//  @include button(20px, 13px 34px, $red-color, white);
 
 body{
     nav{
         .container{
-            
+            @include container;
         }
     }
 }
