@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import"./mixin/button";
 @import"./variablals";
+@import"../scss/mixin/center";
 @import"../scss/mixin/container";
 
 * {
@@ -8,12 +11,308 @@
     box-sizing: border-box;
 }
 
-//  @include button(20px, 13px 34px, $red-color, white);
 
-body{
-    nav{
-        .container{
+
+body {
+
+    nav {
+        background-color: $black-color;
+
+        .container1 {
             @include container;
+            color: $white-color;
+            height: 70px;
+            padding: 14px 0 50px 0;
+
+            .nav-flex {
+                @include center;
+                justify-content: space-between;
+
+                .nav-text {
+                    @include center;
+                    cursor: pointer;
+                    gap: 1.5rem;
+
+                    a {
+                        text-decoration: none;
+                        font-family: "Inter", sans-serif;
+                        font-size: 15px;
+                        color: $white-color;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .store-p {
+                        font-family: "Inter", sans-serif;
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+                }
+
+                .nav-icon-flex {
+                    @include center;
+                    gap: 2rem;
+
+                    .nav-icon1 {
+                        @include center;
+                        padding: 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: $icon-hover;
+                        }
+                    }
+
+                    .nav-icon1.theme-wrapper {
+                        position: relative;
+
+                        .theme-dropdown {
+                            position: absolute;
+                            top: 100%;
+                            right: 0;
+                            margin-top: 15px;
+                            width: 140px;
+                            background-color: $black-color;
+                            border: 1px solid $grey-color;
+                            border-radius: 12px;
+                            padding: 8px 0;
+                            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(5px);
+                            transition: all 0.2s ease;
+                            z-index: 100;
+
+                            .theme-option {
+                                padding: 10px 20px;
+                                font-size: 14px;
+                                color: $white-color;
+                                font-family: "Inter", sans-serif;
+                                transition: background-color 0.2s;
+
+                                &:hover {
+                                    background-color: $icon-hover;
+                                }
+                            }
+                        }
+
+                        &.active {
+                            .theme-dropdown {
+                                opacity: 1;
+                                visibility: hidden;
+                                visibility: visible;
+                                transform: translateY(0);
+                            }
+                        }
+                    }
+
+                    .wishlist-wrapper {
+                        position: relative;
+
+                        .wishlist-dropdown {
+                            position: absolute;
+                            top: 100%;
+                            right: -130px;
+                            margin-top: 15px;
+                            width: 300px;
+                            height: 150px;
+                            background-color: $black-color;
+                            border: 1px solid $icon-hover;
+                            border-radius: 12px;
+                            padding: 13px;
+                            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                            color: $white-color;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(5px);
+                            transition: all 0.3s ease;
+                            z-index: 100;
+
+                            .wishlist-header {
+                                font-size: 11px;
+                                font-weight: 600;
+                                margin-bottom: 10px;
+                                font-family: "Inter", sans-serif;
+                            }
+
+                            .wishlist-item {
+                                display: flex;
+                                align-items: center;
+                                gap: 15px;
+                                margin-bottom: 15px;
+
+                                img {
+                                    width: 40px;
+                                    height: 40px;
+                                    object-fit: cover;
+                                    border-radius: 8px;
+                                }
+
+                                .item-info {
+                                    .item-title {
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        font-family: "Inter", sans-serif;
+                                        margin-bottom: 4px;
+                                    }
+
+                                    .item-price {
+                                        font-size: 14px;
+                                        color: $grey-color;
+                                        font-family: "Inter", sans-serif;
+                                    }
+                                }
+                            }
+
+                            .view-wishlist-btn {
+                                width: 100%;
+                                border: none;
+                                @include button(8px, 12px, $btn2-color, $white-color);
+                                padding: 12px;
+                                font-size: 15px;
+                                font-weight: 500;
+                                cursor: pointer;
+                                font-family: "Inter", sans-serif;
+                                transition: background-color 0.2s;
+
+                                &:hover {
+                                    background-color: $btn-color ;
+                                }
+                            }
+                        }
+
+                        &:hover .wishlist-dropdown {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    .nav-icon1.cart-wrapper {
+                        position: relative;
+                        cursor: pointer;
+
+                        .cart-badge {
+                            position: absolute;
+                            top: 2px;
+                            right: 2px;
+                            background-color: $btn-color;
+                            color: $white-color;
+                            font-size: 11px;
+                            font-family: "Inter", sans-serif;
+                            padding: 1px 5px;
+                            border-radius: 10px;
+                            font-weight: 600;
+                        }
+
+                        .cart-dropdown {
+                            position: absolute;
+                            top: 100%;
+                            right: -130px;
+                            margin-top: 15px;
+                            width: 300px;
+                            height: 154px;
+                            background-color: $black-color;
+                            border: 1px solid $icon-hover;
+                            border-radius: 12px;
+                            padding: 13px;
+                            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                            color: $white-color;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(5px);
+                            transition: all 0.3s ease;
+                            z-index: 100;
+
+                            .cart-header {
+                                font-size: 12px;
+                                font-weight: 600;
+                                margin-bottom: 10px;
+                                font-family: "Inter", sans-serif;
+                            }
+
+                            .cart-item {
+                                display: flex;
+                                align-items: center;
+                                gap: 15px;
+                                margin-bottom: 10px;
+
+                                img {
+                                    width: 50px;
+                                    height: 50px;
+                                    object-fit: cover;
+                                    border-radius: 8px;
+                                }
+
+                                .item-info {
+                                    .item-title {
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        font-family: "Inter", sans-serif;
+                                        margin-bottom: 4px;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        max-width: 210px;
+                                    }
+
+                                    .item-price {
+                                        font-size: 14px;
+                                        color: $grey-color;
+                                        font-family: "Inter", sans-serif;
+                                    }
+                                }
+                            }
+
+                            .view-cart-btn {
+                                width: 100%;
+                                border: none;
+                                @include button(8px, 12px, $btn2-color, $white-color);
+                                padding: 12px;
+                                font-size: 15px;
+                                font-weight: 500;
+                                cursor: pointer;
+                                font-family: "Inter", sans-serif;
+                                transition: background-color 0.2s;
+
+                                &:hover {
+                                    background-color: $btn-color ;
+                                }
+                            }
+                        }
+
+                        &:hover .cart-dropdown {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    .svg-login {
+                        @include center;
+                        gap: 1rem;
+                        cursor: pointer;
+                        border-radius: 8px;
+                        padding: 8px 13px;
+                        border: 2px solid $icon-hover;
+
+                        &:hover {
+                            background-color: $icon-hover;
+                        }
+
+                        p {
+                            font-family: "Inter", sans-serif;
+                            font-size: 15px;
+                            color: $white-color;
+                        }
+                    }
+                }
+            }
         }
     }
+
+    
 }
