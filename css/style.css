@@ -7,6 +7,7 @@
 
 body nav {
   background-color: #020817;
+  border-bottom: 2px solid #1E293B;
 }
 body nav .container1 {
   max-width: 1300px;
@@ -272,6 +273,18 @@ body nav .container1 .nav-flex .nav-icon-flex .svg-login p {
   font-family: "Inter", sans-serif;
   font-size: 15px;
   color: #fff;
+}
+body .text-section {
+  background-color: #020817;
+}
+body .text-section .text-div {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+body .text-section .text-div h1 {
+  padding: 20px 0 30px 0;
+  color: #fff;
+  font-family: "Inter";
 }
 
 /*# sourceMappingURL=style.css.map */
