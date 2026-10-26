@@ -10,7 +10,7 @@ body nav {
   border-bottom: 2px solid #1E293B;
 }
 body nav .container1 {
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0 auto;
   color: #fff;
   height: 70px;
@@ -278,7 +278,7 @@ body .text-section {
   background-color: #020817;
 }
 body .text-section .text-div {
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 body .text-section .text-div h1 {
@@ -292,7 +292,7 @@ body .categories-section {
   padding-bottom: 100px;
 }
 body .categories-section .categories-card-flex {
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -339,9 +339,8 @@ body .site-footer {
   padding-top: 60px;
 }
 body .site-footer .footer-container {
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 2fr;
   gap: 40px;

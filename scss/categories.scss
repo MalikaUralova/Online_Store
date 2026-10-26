@@ -392,7 +392,6 @@ body {
 
         .footer-container {
             @include container;
-            padding: 0 20px;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 2fr;
             gap: 40px;
