@@ -10,7 +10,7 @@ body nav {
   border-bottom: 2px solid #1E293B;
 }
 body nav .container1 {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
   color: #fff;
   height: 70px;
@@ -39,7 +39,7 @@ body nav .container1 .nav-flex .nav-text a:hover {
 body nav .container1 .nav-flex .nav-text .store-p {
   font-family: "Inter", sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
 }
 body nav .container1 .nav-flex .nav-icon-flex {
   display: flex;
@@ -278,19 +278,20 @@ body .text-section {
   background-color: #020817;
 }
 body .text-section .text-div {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 body .text-section .text-div h1 {
   padding: 50px 0 40px 0;
   color: #fff;
   font-family: "Inter";
+  font-size: 33px;
 }
 body .search-section {
   background-color: #020817;
 }
 body .search-section .search-container {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 body .search-section .search-container .search-flex {
@@ -314,7 +315,7 @@ body .search-section .search-container .search-flex .search-input input {
   font-family: "Inter";
   font-size: 16px;
   padding: 15px 10px 15px 50px;
-  width: 1160px;
+  width: 1360px;
 }
 body .search-section .search-container .search-flex .search-input input:focus {
   border: 2px solid #3B82F6;
@@ -349,7 +350,7 @@ body .cart-section {
   padding: 40px 0;
 }
 body .cart-section .container1 {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 body .cart-section .container1 .products-grid {
@@ -534,7 +535,7 @@ body .site-footer {
   padding-top: 60px;
 }
 body .site-footer .footer-container {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
