@@ -586,7 +586,7 @@ body {
                     .add-to-cart-btn {
                         @include button(8px, 10px, $btn-color, $black-color);
                         margin: 10px;
-                        width: 285px;
+                        width: 335px;
                         border: none;
                         font-family: "Inter", sans-serif;
                         font-size: 14px;
@@ -598,7 +598,6 @@ body {
             }
         }
     }
-
 
 
     .site-footer {
