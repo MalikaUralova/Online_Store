@@ -14,7 +14,7 @@ export function initLogin() {
             localStorage.setItem("user", JSON.stringify(userData));
 
             alert("Muvaffaqiyatli kirildi!");
-            window.location.href = "../index.html"; // Asosiy sahifaga qaytish uchun bir papka tepaga chiqamiz
+            window.location.href = "../index.html"; 
         }
     });
 }
