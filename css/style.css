@@ -265,6 +265,8 @@ body nav .container1 .nav-flex .nav-icon-flex .svg-login {
   border-radius: 8px;
   padding: 8px 13px;
   border: 2px solid #1E293B;
+  text-decoration: none;
+  color: #fff;
 }
 body nav .container1 .nav-flex .nav-icon-flex .svg-login:hover {
   background-color: #1E293B;
@@ -526,6 +528,103 @@ body .cart-section .container1 .products-grid .product-card .add-to-cart-btn {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+body .login-section {
+  background-color: #020817;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+}
+body .login-section .login-card {
+  background-color: #020817;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+body .login-section .login-card .login-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+body .login-section .login-card .login-subtitle {
+  color: #94A3B8;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+body .login-section .login-card .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body .login-section .login-card .login-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body .login-section .login-card .login-form .form-group label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+body .login-section .login-card .login-form .form-group input {
+  background-color: transparent;
+  border: 2px solid #1E293B;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+body .login-section .login-card .login-form .form-group input::placeholder {
+  color: #94A3B8;
+}
+body .login-section .login-card .login-form .form-group input:focus {
+  border-color: #3B82F6;
+}
+body .login-section .login-card .login-form .form-group input:-webkit-autofill, body .login-section .login-card .login-form .form-group input:-webkit-autofill:hover, body .login-section .login-card .login-form .form-group input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px #1E293B inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+body .login-section .login-card .login-form .login-submit-btn {
+  border-radius: 8px;
+  padding: 12px;
+  background: #3B82F6;
+  color: #020817;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s;
+}
+body .login-section .login-card .login-form .login-submit-btn:hover {
+  background-color: #2359ed;
+  color: #fff;
+}
+body .login-section .login-card .register-text {
+  text-align: center;
+  color: #94A3B8;
+  font-size: 14px;
+  margin-top: 24px;
+}
+body .login-section .login-card .register-text a {
+  color: #3B82F6;
+  text-decoration: none;
+  font-weight: 500;
+}
+body .login-section .login-card .register-text a:hover {
+  text-decoration: underline;
 }
 body .site-footer {
   background-color: #0D1526;
