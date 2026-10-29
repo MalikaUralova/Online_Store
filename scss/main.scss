@@ -4,6 +4,8 @@
 @import"../scss/base/variablals";
 @import"../scss/pages/center";
 @import"../scss/pages/container";
+@import"../scss/pages/wishlist";
+@import"../scss/pages/cards";
 
 * {
     margin: 0;
@@ -61,11 +63,14 @@ body {
                         padding: 10px;
                         border-radius: 5px;
                         cursor: pointer;
+                        text-decoration: none;
+                        color: $white-color;
 
                         &:hover {
                             background-color: $icon-hover;
                         }
                     }
+                    
 
                     .nav-icon1.theme-wrapper {
                         position: relative;
@@ -80,6 +85,7 @@ body {
                             border: 1px solid $icon-hover;
                             border-radius: 12px;
                             padding: 8px 0;
+                            color: red;
                             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
                             opacity: 0;
                             visibility: hidden;
@@ -198,13 +204,15 @@ body {
 
                         .cart-badge {
                             position: absolute;
-                            top: 2px;
-                            right: 2px;
+                            display: flex;
+                            align-items: center;
+                            top: -3px;
+                            right: -6px;
                             background-color: $btn-color;
-                            color: $white-color;
-                            font-size: 11px;
+                            color: $black-color;
+                            font-size: 12px;
                             font-family: "Inter", sans-serif;
-                            padding: 1px 5px;
+                            padding: 3px 7px;
                             border-radius: 10px;
                             font-weight: 600;
                         }
@@ -312,6 +320,7 @@ body {
                             color: $white-color;
                         }
                     }
+
                 }
             }
         }
