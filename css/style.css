@@ -1466,4 +1466,20 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   color: #fff;
 }
 
+:root {
+  --bg-color: #19110b;
+  --text-color: #ffffff;
+}
+
+html.light-mode {
+  --bg-color: #ffffff !important;
+  --text-color: #111827 !important;
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+html.light-mode body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 /*# sourceMappingURL=style.css.map */
