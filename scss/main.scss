@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-@import"../scss/pages/button";
-@import"../scss/base/variablals";
-@import"../scss/pages/center";
-@import"../scss/pages/container";
-@import"../scss/pages/wishlist";
-@import"../scss/pages/cards";
-
+@import "pages/button";
+@import "base/variablals";
+@import "pages/center";
+@import "pages/container";
+@import "pages/wishlist";
+@import "pages/cards";
+@import"pages/filter";
 * {
     margin: 0;
     padding: 0;
@@ -422,6 +422,7 @@ body {
                 gap: 24px;
 
                 .product-card {
+                    position: relative !important;
                     background-color: $black-color;
                     border: 1px solid $icon-hover;
                     border-radius: 12px;
@@ -837,3 +838,4 @@ body {
 
 
 }
+

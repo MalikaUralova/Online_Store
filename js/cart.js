@@ -1,113 +1,113 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartContainer = document.getElementById("cartContainer"); 
+const subtotalEl = document.getElementById("subtotalPrice");
+const taxEl = document.getElementById("taxPrice");
+const totalEl = document.getElementById("totalPrice");
+const checkoutBtn = document.querySelector(".checkout-btn"); 
+const cartBadge = document.querySelector(".cart-badge"); 
 
-export function renderCart() {
-    const cartContainer = document.querySelector("#cartContainer");
-    const subtotalEl = document.querySelector("#subtotalPrice");
-    const taxEl = document.querySelector("#taxPrice");
-    const totalEl = document.querySelector("#totalPrice");
-
-    if (!cartContainer) return;
-
-    // Agar savatcha bo'sh bo'lsa
-    if (cart.length === 0) {
-        cartContainer.innerHTML = '<p class="empty-cart-text">Savatchangizda mahsulotlar yo\'q</p>';
-        if (subtotalEl) subtotalEl.textContent = "$0.00";
-        if (taxEl) taxEl.textContent = "$0.00";
-        if (totalEl) totalEl.textContent = "$0.00";
-        return;
+function updateCartBadge() {
+    if (cartBadge) {
+        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        cartBadge.textContent = totalItems;
+        cartBadge.style.display = totalItems > 0 ? "inline-block" : "none";
     }
+}
 
-    cartContainer.innerHTML = "";
-    let subtotal = 0;
-
-    cart.forEach(function(item) {
-        const itemTotal = item.price * item.quantity;
-        subtotal += itemTotal;
-
-        cartContainer.innerHTML += `
-            <div class="cart-item">
-                <div class="item-main">
-                    <img class="item-img" src="${item.image}" alt="${item.title}">
-                    <div class="item-details">
-                        <h4 class="item-name">${item.title}</h4>
-                        <p class="item-unit-price">$${item.price}</p>
-                        <div class="qty-controls">
-                            <button class="qty-btn minus-btn" data-id="${item.id}">-</button>
-                            <span class="qty-value">${item.quantity}</span>
-                            <button class="qty-btn plus-btn" data-id="${item.id}">+</button>
-                            <button class="delete-btn" data-id="${item.id}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-total-price">$${itemTotal.toFixed(2)}</div>
-            </div>
-        `;
-    });
-
-    // Summalarni hisoblash
-    const tax = subtotal * 0.1;
-    const total = subtotal + tax;
+function updateCartTotals() {
+    let subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+    let tax = subtotal * 0.1; 
+    let total = subtotal + tax;
 
     if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
     if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
     if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
-
-    initCartEvents();
 }
 
-function initCartEvents() {
-    // Plus tugmasi
-    document.querySelectorAll(".plus-btn").forEach(function(btn) {
-        btn.addEventListener("click", function(e) {
-            const id = Number(e.currentTarget.getAttribute("data-id"));
-            const item = cart.find(function(p) { return p.id === id; });
-            if (item) {
-                item.quantity += 1;
-                saveAndReload();
-            }
-        });
-    });
 
-    // Minus tugmasi
-    document.querySelectorAll(".minus-btn").forEach(function(btn) {
-        btn.addEventListener("click", function(e) {
-            const id = Number(e.currentTarget.getAttribute("data-id"));
-            const item = cart.find(function(p) { return p.id === id; });
-            if (item && item.quantity > 1) {
-                item.quantity -= 1;
-                saveAndReload();
-            }
-        });
-    });
+function renderCart() {
+    if (!cartContainer) return;
 
-    // O'chirish (Trash) tugmasi
-    document.querySelectorAll(".delete-btn").forEach(function(btn) {
-        btn.addEventListener("click", function(e) {
-            const id = Number(e.currentTarget.getAttribute("data-id"));
-            cart = cart.filter(function(p) { return p.id !== id; });
-            saveAndReload();
-        });
-    });
-
-    // Clear Cart tugmasi
-    const clearCartBtn = document.querySelector("#clearCartBtn");
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener("click", function() {
-            cart = [];
-            saveAndReload();
-        });
+    if (cart.length === 0) {
+        cartContainer.innerHTML = `<p class="empty-cart-msg" style="color: #94a3b8; padding: 20px 0;">Your cart is empty</p>`;
+        return;
     }
+
+    cartContainer.innerHTML = cart.map((item, index) => {
+        const qty = item.quantity || 1;
+        const itemTotal = (item.price * qty).toFixed(2);
+        return `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-title">${item.title}</h4>
+                <p class="cart-item-price">$${item.price}</p>
+                <div class="cart-item-actions">
+                    <div class="quantity-controls">
+                        <button onclick="decreaseQty(${index})" class="qty-btn">-</button>
+                        <span class="qty-value">${qty}</span>
+                        <button onclick="increaseQty(${index})" class="qty-btn">+</button>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="delete-btn" title="Remove">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cart-item-total">
+                $${itemTotal}
+            </div>
+        </div>
+    `;
+    }).join("");
 }
 
-function saveAndReload() {
+window.increaseQty = function (index) {
+    cart[index].quantity = (cart[index].quantity || 1) + 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
+    updateCartTotals();
+    updateCartBadge();
+};
+
+window.decreaseQty = function (index) {
+    if ((cart[index].quantity || 1) > 1) {
+        cart[index].quantity -= 1;
+    } else {
+        cart.splice(index, 1);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+    updateCartTotals();
+    updateCartBadge();
+};
+
+
+window.removeFromCart = function (index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+    updateCartTotals();
+    updateCartBadge();
+};
+
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", function () {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
+        alert("Order placed successfully! Thank you for your purchase.");
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        renderCart();
+        updateCartTotals();
+        updateCartBadge();
+    });
 }
 
-// Sahifa ochilishi bilan ishga tushishi uchun:
+updateCartBadge();
+updateCartTotals();
 renderCart();
