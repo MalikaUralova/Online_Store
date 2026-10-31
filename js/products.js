@@ -39,12 +39,25 @@ export function loadProducts() {
             `;
         });
 }
-
 export function renderProducts(products) {
     const productsContainer = document.querySelector("#productsContainer");
     if (!productsContainer) return;
 
     productsContainer.innerHTML = "";
+    if (products.length === 0) {
+        productsContainer.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; margin-top: 60px; color: #fff; font-family: 'Inter', sans-serif;">
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">
+                    No products found
+                </h3>
+                <p style="color: #94a3b8; font-size: 17px;">
+                    Try changing your search or filter criteria
+                </p>
+            </div>
+        `;
+        return;
+    }
+
     products.forEach(function (item) {
         const { id, title, price, description, image } = item;
         const isLiked = wishlist.some(function (prod) {
@@ -197,11 +210,10 @@ export function setupSearch() {
     });
 }
 
-
 export function setupFilter() {
     const filterDrawer = document.getElementById("filterDrawer");
     const filterOverlay = document.getElementById("filterOverlay");
-    const filterBtn = document.querySelector(".filter"); 
+    const filterBtn = document.querySelector(".filter");
     const closeFilterBtn = document.getElementById("closeFilterBtn");
     const categorySelect = document.getElementById("categorySelect");
     const clearFiltersBtn = document.getElementById("clearFiltersBtn");
