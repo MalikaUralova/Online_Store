@@ -1,73 +1,89 @@
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-const wishlistContainer = document.querySelector("#wishlistPageContainer");
-
-export function renderWishlistPage() {
-    if (!wishlistContainer) return;
+export function renderFullWishlistPage() {
+    const productsContainer = document.querySelector("#wishlistPageContainer") || document.querySelector("#productsContainer");
+    if (!productsContainer) return;
 
     if (wishlist.length === 0) {
-        wishlistContainer.innerHTML = `
-            <div style="text-align: center; padding: 80px 20px; font-family: 'Inter', sans-serif;">
-                <h2 style="font-size: 28px; margin-bottom: 10px; color: inherit;">Your Wishlist is Empty</h2>
-                <p style="color: #888; margin-bottom: 25px;">Add some products to your wishlist to see them here.</p>
-                <a href="../index.html" style="background: #2563eb; color: #fff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; display: inline-block;">Continue Shopping</a>
+        productsContainer.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; margin-top: 60px; color: #fff; font-family: 'Inter', sans-serif;">
+                <h3 style="font-size: 22px; font-weight: 600; margin-bottom: 8px;">Your Wishlist is Empty</h3>
+                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Add items you love to your wishlist.</p>
+                <a href="../index.html" style="background: #2563eb; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500;">Continue Shopping</a>
             </div>
         `;
         return;
     }
 
-    let cardsHTML = "";
-    wishlist.forEach(function(item) {
-        cardsHTML += `
-            <div class="product-card" style="font-family: 'Inter', sans-serif;">
-                <div class="product-img-box" style="height: 200px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 8px; margin-bottom: 15px;">
-                    <img class="image" src="${item.image}" alt="${item.title}" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-                </div>
-                <div class="product-info">
-                    <div>
-                        <h3 class="product-title">${item.title}</h3>
+    let html = `
+        <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+            <h2 style="color: #fff; font-size: 22px; font-weight: 600;">My Wishlist (${wishlist.length} items)</h2>
+            <button id="clearWishlistBtn" style="background: transparent; border: 1px solid #1f2937; color: #fff; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;">
+                Clear Wishlist
+            </button>
+        </div>
+        <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+    `;
+
+    wishlist.forEach(function (item) {
+        const { id, title, price, image } = item;
+        html += `
+            <div class="product-card" style="background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 16px; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="background: #fff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; margin-bottom: 12px;">
+                        <img src="${image}" alt="${title}" style="height: 160px; object-fit: contain;" />
                     </div>
-                    <div class="product-price">$${item.price}</div>
+                    <h3 style="color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${title}</h3>
+                    <div style="color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 16px;">$${price}</div>
                 </div>
-                <button class="add-to-cart-btn add-from-wishlist-btn" data-id="${item.id}">Add to Cart</button>
+                <div style="display: flex; gap: 8px;">
+                    <button class="add-to-cart-from-wishlist" data-id="${id}" style="flex: 1; background-color: #2563eb; color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        Add to Cart
+                    </button>
+                    <button class="remove-from-wishlist" data-id="${id}" style="background: transparent; border: 1px solid #1f2937; color: #94a3b8; padding: 10px; border-radius: 8px; cursor: pointer;">
+                        🗑️
+                    </button>
+                </div>
             </div>
         `;
     });
 
-    wishlistContainer.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-family: 'Inter', sans-serif;">
-            <h2 style="font-size: 24px;">My Wishlist (${wishlist.length} items)</h2>
-            <button id="clearWishlistBtn" style="background: transparent; border: 1px solid #444; color: inherit; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Clear Wishlist</button>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
-            ${cardsHTML}
-        </div>
-    `;
+    html += `</div>`;
+    productsContainer.innerHTML = html;
 
-    attachWishlistEvents();
-}
-
-function attachWishlistEvents() {
-    const clearBtn = document.querySelector("#clearWishlistBtn");
+    // Clear Wishlist tugmasi
+    const clearBtn = document.getElementById("clearWishlistBtn");
     if (clearBtn) {
         clearBtn.addEventListener("click", () => {
-            localStorage.removeItem("wishlist");
             wishlist = [];
-            renderWishlistPage();
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            renderFullWishlistPage();
         });
     }
 
-    const addToCartBtns = document.querySelectorAll(".add-from-wishlist-btn");
+    // Wishlistdan o'chirish
+    const removeBtns = document.querySelectorAll(".remove-from-wishlist");
+    removeBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const id = Number(e.currentTarget.getAttribute("data-id"));
+            wishlist = wishlist.filter(item => item.id !== id);
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            renderFullWishlistPage();
+        });
+    });
+
+    
+    const addToCartBtns = document.querySelectorAll(".add-to-cart-from-wishlist");
     addToCartBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
             const id = Number(e.currentTarget.getAttribute("data-id"));
-            const product = wishlist.find(p => p.id === id);
+            const product = wishlist.find(item => item.id === id);
             if (!product) return;
 
-            const existing = cart.find(p => p.id === id);
-            if (existing) {
-                existing.quantity = (Number(existing.quantity) || 1) + 1;
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity = (Number(existingItem.quantity) || 1) + 1;
             } else {
                 cart.push({ ...product, quantity: 1 });
             }
@@ -78,5 +94,5 @@ function attachWishlistEvents() {
     });
 }
 
-
-renderWishlistPage();
+// Sahifa ochilganda avtomatik ishga tushishi uchun:
+renderFullWishlistPage();

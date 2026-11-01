@@ -109,9 +109,12 @@ export function renderProducts(products) {
 
     initLikeButtons(allProducts);
     initCartButtons(allProducts);
+    initDetailButtons(allProducts);
     updateWishlistUI();
     updateCartBadge();
 }
+
+
 
 function initLikeButtons(productsList) {
     const likeButtons = document.querySelectorAll(".like-btn");
@@ -169,6 +172,8 @@ function initCartButtons(productsList) {
 export function updateWishlistUI() {
     const wishlistWrapper = document.querySelector(".wishlist-wrapper");
     if (!wishlistWrapper) return;
+
+    // 1. Navbardagi yurakcha badge (soni)
     let badge = wishlistWrapper.querySelector(".cart-badge");
     if (!badge) {
         badge = document.createElement("span");
@@ -177,11 +182,67 @@ export function updateWishlistUI() {
     }
     badge.textContent = wishlist.length;
     badge.style.display = wishlist.length === 0 ? "none" : "flex";
-}
 
+    // 2. Dropdown menyu ichini yangilash
+    const wishlistDropdown = wishlistWrapper.querySelector(".wishlist-dropdown");
+    if (wishlistDropdown) {
+        // 💡 Oyna balandligini avtomatik moslashuvchi stil
+        wishlistDropdown.style.height = "auto";
+        wishlistDropdown.style.maxHeight = "none";
+        wishlistDropdown.style.overflow = "visible";
+
+        let dropdownHtml = `
+            <div class="wishlist-header" style="font-family: 'Inter', sans-serif;">
+                <h3 style="color: #fff; margin-bottom: 8px; font-family: 'Inter', sans-serif;">Wishlist (${wishlist.length})</h3>
+            </div>
+        `;
+
+        if (wishlist.length === 0) {
+            dropdownHtml += `
+                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 15px; font-family: 'Inter', sans-serif;">Your wishlist is empty</p>
+            `;
+        } else {
+            // Faqat dastlabki 2 ta yoki 3 ta mahsulotni ko'rsatamiz
+            const displayedItems = wishlist.slice(0, 2);
+            const remainingCount = wishlist.length - 2;
+
+            displayedItems.forEach(item => {
+                dropdownHtml += `
+                    <div class="wishlist-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: 'Inter', sans-serif;">
+                        <img src="${item.image}" alt="${item.title}" style="width: 40px; height: 40px; object-fit: contain; background: #fff; border-radius: 4px; padding: 4px;">
+                        <div class="item-info">
+                            <p class="item-title" style="color: #fff; font-size: 13px; margin: 0; font-family: 'Inter', sans-serif; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">${item.title}</p>
+                            <p class="item-price" style="color: #94a3b8; font-size: 12px; margin: 0; font-family: 'Inter', sans-serif;">$${item.price}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // 💡 Agar 2 tadan oshsa, "+N more items" yozuvi chiqadi va blokdan chiqmaydi
+            if (remainingCount > 0) {
+                dropdownHtml += `
+                    <p style="text-align: center; color: #94a3b8; font-size: 13px; margin: 8px 0; font-family: 'Inter', sans-serif;">
+                        +${remainingCount} more item${remainingCount > 1 ? 's' : ''}
+                    </p>
+                `;
+            }
+        }
+
+        dropdownHtml += `
+            <a href="./pages/wishlist.html" class="view-wishlist-page-btn"
+                style="display: block; text-align: center; background-color: #2563eb; color: #fff; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 12px;">
+                View Wishlist
+            </a>
+        `;
+
+        wishlistDropdown.innerHTML = dropdownHtml;
+    }
+}
 export function updateCartBadge() {
     const cartWrapper = document.querySelector(".cart-wrapper");
     if (!cartWrapper) return;
+
+    // 1. Navbardagi savatcha badge (soni)
     let badge = cartWrapper.querySelector(".cart-badge");
     if (!badge) {
         badge = document.createElement("span");
@@ -191,6 +252,78 @@ export function updateCartBadge() {
     const totalCount = cart.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
     badge.textContent = totalCount;
     badge.style.display = totalCount === 0 ? "none" : "flex";
+
+    // 2. Savatcha dropdown menyusini yangilash
+    const cartDropdown = cartWrapper.querySelector(".cart-dropdown");
+    if (cartDropdown) {
+        cartDropdown.style.height = "auto";
+        cartDropdown.style.maxHeight = "none";
+        cartDropdown.style.overflow = "visible";
+
+        let dropdownHtml = `
+            <div class="cart-header" style="font-family: 'Inter', sans-serif;">
+                <h3 style="color: #fff; margin-bottom: 8px; font-family: 'Inter', sans-serif;">Cart (${totalCount})</h3>
+            </div>
+        `;
+
+        if (cart.length === 0) {
+            dropdownHtml += `
+                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 15px; font-family: 'Inter', sans-serif;">Your cart is empty</p>
+            `;
+        } else {
+            // Faqat dastlabki 3 ta mahsulotni ko'rsatamiz
+            const displayedItems = cart.slice(0, 3);
+            const remainingCount = cart.length - 3;
+
+            displayedItems.forEach(item => {
+                dropdownHtml += `
+                    <div class="cart-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: 'Inter', sans-serif;">
+                        <img src="${item.image}" alt="${item.title}" style="width: 40px; height: 40px; object-fit: contain; background: #fff; border-radius: 4px; padding: 4px;">
+                        <div class="item-info">
+                            <p class="item-title" style="color: #fff; font-size: 13px; margin: 0; font-family: 'Inter', sans-serif; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">${item.title}</p>
+                            <p class="item-price" style="color: #94a3b8; font-size: 12px; margin: 0; font-family: 'Inter', sans-serif;">$${item.price} × ${item.quantity}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Agar 3 tadan oshsa, "+N more items" yozuvi chiqadi
+            if (remainingCount > 0) {
+                dropdownHtml += `
+                    <p style="text-align: center; color: #94a3b8; font-size: 13px; margin: 8px 0; font-family: 'Inter', sans-serif;">
+                        +${remainingCount} more item${remainingCount > 1 ? 's' : ''}
+                    </p>
+                `;
+            }
+        }
+
+        dropdownHtml += `
+            <div style="margin-top: 15px;">
+                <button class="view-cart-btn" style="width: 100%; display: block; text-align: center; background-color: #2563eb; color: #fff; border: none; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif;">View Cart</button>
+            </div>
+        `;
+
+        cartDropdown.innerHTML = dropdownHtml;
+    }
+}
+
+
+
+
+function initDetailButtons(productsList) {
+    const detailButtons = document.querySelectorAll(".view-details-btn");
+    detailButtons.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            const button = e.currentTarget;
+            const productId = Number(button.getAttribute("data-id"));
+
+            // Mahsulot ID sini localStorage ga saqlab qo'shamiz yoki URL orqali uzatamiz
+            localStorage.setItem("selectedProductId", productId);
+
+            // Tafsilotlar sahifasiga yo'naltirish (yo'lini o'zingizning papkangizga qarab moslang)
+            window.location.href = "./pages/details.html"; // yoki shunchaki details.html
+        });
+    });
 }
 
 export function setupSearch() {

@@ -24,13 +24,25 @@ function updateCartTotals() {
     if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
 }
 
-
 function renderCart() {
     if (!cartContainer) return;
 
+    const emptyCartMessage = document.getElementById("emptyCartMessage");
+    const cartRight = document.querySelector(".cart-right");
+    const clearCartBottom = document.querySelector(".cart-actions-bottom");
+
     if (cart.length === 0) {
-        cartContainer.innerHTML = `<p class="empty-cart-msg" style="color: #94a3b8; padding: 20px 0;">Your cart is empty</p>`;
+        cartContainer.innerHTML = "";
+        if (cartRight) cartRight.style.display = "none";
+        if (clearCartBottom) clearCartBottom.style.display = "none";
+        if (emptyCartMessage) emptyCartMessage.style.display = "flex";
+        updateCartTotals();
+        updateCartBadge();
         return;
+    } else {
+        if (cartRight) cartRight.style.display = "block";
+        if (clearCartBottom) clearCartBottom.style.display = "flex";
+        if (emptyCartMessage) emptyCartMessage.style.display = "none";
     }
 
     cartContainer.innerHTML = cart.map((item, index) => {
@@ -57,16 +69,42 @@ function renderCart() {
                 $${itemTotal}
             </div>
         </div>
-    `;
+        `;
     }).join("");
+
+    updateCartTotals();
+    updateCartBadge();
+}
+
+// Clear Cart tugmasi uchun funksiya
+export function setupClearCart() {
+    const clearCartBtn = document.getElementById("clearCartBtn");
+    const cartRight = document.querySelector(".cart-right");
+    const clearCartBottom = document.querySelector(".cart-actions-bottom");
+    const emptyCartMessage = document.getElementById("emptyCartMessage");
+
+    if (!clearCartBtn) return;
+
+    clearCartBtn.addEventListener("click", () => {
+        localStorage.removeItem("cart");
+        cart = [];
+
+        if (cartContainer) cartContainer.innerHTML = "";
+        if (cartRight) cartRight.style.display = "none";
+        if (clearCartBottom) clearCartBottom.style.display = "none";
+        if (emptyCartMessage) {
+            emptyCartMessage.style.display = "flex";
+        }
+
+        updateCartTotals();
+        updateCartBadge();
+    });
 }
 
 window.increaseQty = function (index) {
     cart[index].quantity = (cart[index].quantity || 1) + 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
-    updateCartTotals();
-    updateCartBadge();
 };
 
 window.decreaseQty = function (index) {
@@ -77,19 +115,13 @@ window.decreaseQty = function (index) {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
-    updateCartTotals();
-    updateCartBadge();
 };
-
 
 window.removeFromCart = function (index) {
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
-    updateCartTotals();
-    updateCartBadge();
 };
-
 
 if (checkoutBtn) {
     checkoutBtn.addEventListener("click", function () {
@@ -101,12 +133,15 @@ if (checkoutBtn) {
         alert("Order placed successfully! Thank you for your purchase.");
         cart = [];
         localStorage.setItem("cart", JSON.stringify(cart));
-
         renderCart();
-        updateCartTotals();
-        updateCartBadge();
     });
 }
+
+// Boshlang'ich ishga tushirish
+document.addEventListener("DOMContentLoaded", () => {
+    renderCart();
+    setupClearCart();
+});
 
 updateCartBadge();
 updateCartTotals();

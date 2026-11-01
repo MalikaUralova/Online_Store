@@ -1376,7 +1376,6 @@ body .site-footer {
   color: #94A3B8;
   font-family: "Inter", sans-serif;
   border-top: 1px solid #1E293B;
-  padding-top: 60px;
 }
 body .site-footer .footer-container {
   max-width: 1500px;
@@ -1464,6 +1463,589 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a {
 }
 body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   color: #fff;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.sidebar-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-sidebar {
+  position: fixed !important;
+  top: 0;
+  left: -280px;
+  width: 270px;
+  height: 100vh;
+  background-color: #050a14;
+  /* Rasmdagi quyuq to'q ko'k/qora fon */
+  color: #ffffff;
+  z-index: 999;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-sidebar.open {
+  left: 0 !important;
+}
+.mobile-sidebar .sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+.mobile-sidebar .sidebar-header .close-sidebar-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-sidebar .sidebar-header .close-sidebar-btn:hover {
+  color: #ffffff;
+}
+.mobile-sidebar .sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.mobile-sidebar .sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.mobile-sidebar .sidebar-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.mobile-sidebar .sidebar-links a:hover {
+  opacity: 0.8;
+}
+.mobile-sidebar .sidebar-theme-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.mobile-sidebar .sidebar-theme-row .sidebar-theme-toggle {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 24px;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.sidebar-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  /* Boshida ekrandan tashqarida yashiringan */
+  width: 280px;
+  height: 100vh;
+  background-color: var(--bg-color, #0b0f19);
+  color: var(--text-color, #ffffff);
+  z-index: 999;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: left 0.35s ease-in-out;
+  box-sizing: border-box;
+}
+.mobile-sidebar.open {
+  left: 0 !important;
+  /* Ochilganda chapdan chiqadi */
+}
+.mobile-sidebar .sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+.mobile-sidebar .sidebar-header .close-sidebar-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 20px;
+}
+.mobile-sidebar .sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+.mobile-sidebar .sidebar-links a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  transition: color 0.2s;
+}
+.mobile-sidebar .sidebar-links a:hover {
+  color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .nav-text p:not(.store-p) {
+    display: none !important;
+  }
+  .nav-icon-flex .nav-icon:not(.theme-wrapper),
+  .nav-icon-flex .svg-login {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-flex {
+    justify-content: space-between;
+  }
+}
+/* --- DESKTOP STYLES (Asosiy kodni to'g'rilash) --- */
+.search-section {
+  background-color: #020817;
+}
+.search-section .search-container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.search-section .search-container .search-flex {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: #fff;
+}
+.search-section .search-container .search-flex .search-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  /* Fixed 1360px o'rniga moslashuvchan qilish */
+}
+.search-section .search-container .search-flex .search-input input {
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  border: 2px solid #1E293B;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  padding: 15px 10px 15px 50px;
+  width: 100%;
+  /* Qutini to'liq kenglikda ushlash */
+  box-sizing: border-box;
+}
+.search-section .search-container .search-flex .search-input input:focus {
+  border: 2px solid #3B82F6;
+}
+.search-section .search-container .search-flex .search-input input::placeholder {
+  color: #94A3B8;
+}
+.search-section .search-container .search-flex .search-input svg {
+  position: absolute;
+  left: 20px;
+  color: #94A3B8;
+}
+.search-section .search-container .search-flex .filter {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #1E293B;
+  white-space: nowrap;
+}
+.search-section .search-container .search-flex .filter p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.search-section .search-container .search-flex .filter:hover {
+  background-color: #1E293B;
+}
+
+/* --- MOBIL EKRANLARDA KONTEYNER CHETLARINI TO'G'RILASH --- */
+@media (max-width: 768px) {
+  /* Navbar konteyneriga yon tomonlardan bo'shliq beramiz */
+  nav .container1 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box;
+  }
+  /* "Online Store" sarlavhasi joylashgan konteynerga ham bo'shliq beramiz */
+  .text-section .text-div {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box;
+  }
+  .text-section {
+    border-bottom: none !important;
+  }
+  /* Qidiruv va filtr qismi ham chiroyli turishi uchun */
+  .search-section .search-container {
+    padding-top: 20px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  /* --- "ONLINE STORE" TAGIDAGI CHIZIQNI OLIB TASHLASH --- */
+  .text-section,
+  .search-section {
+    border-bottom: none !important;
+  }
+  /* Agar chiziq qaysidir boshqa klass yoki elementga tegishli bo'lsa, umumiy tozalash: */
+  .text-section {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+@media (max-width: 768px) {
+  /* 1. Sarlavha qismi (Online Store) */
+  .text-section .text-div h1 {
+    padding: 24px 0 16px 0 !important;
+    font-size: 28px !important;
+    font-weight: 700;
+  }
+  /* 2. Qidiruv va Filter bo'limi */
+  .search-section .search-container .search-flex {
+    flex-direction: column !important;
+    /* Elementlarni ustma-ust joylashtirish */
+    align-items: flex-start !important;
+    /* Chap tomonga tekislash */
+    gap: 12px !important;
+    /* Qidiruv qutisi telefonda 100% bo'ladi */
+  }
+  .search-section .search-container .search-flex .search-input {
+    width: 100% !important;
+  }
+  .search-section .search-container .search-flex .search-input input {
+    padding: 12px 10px 12px 45px !important;
+    font-size: 15px !important;
+    border-radius: 8px !important;
+  }
+  .search-section .search-container .search-flex .search-input svg {
+    left: 15px !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .search-section .search-container .search-flex {
+    /* Filter tugmasi rasmga o'xshab chap tomonda ixcham turadi */
+  }
+  .search-section .search-container .search-flex .filter {
+    width: auto !important;
+    /* To'liq kenglikka cho'zilib ketmaydi */
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+  }
+  .search-section .search-container .search-flex .filter p {
+    font-size: 15px !important;
+  }
+  .search-section .search-container .search-flex .filter svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+/* ==========================================
+   MAHSULOTLAR KARTASINING MOBIL UCHUN MEDIASI
+   ========================================== */
+@media (max-width: 768px) {
+  .cart-section {
+    padding: 20px 0 !important;
+  }
+  .cart-section .container1 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .cart-section .container1 .products-grid {
+    /* Telefonda grid 4 tadan 1 taga o'zgaradi va har bir qatorda 1 tadan chiqadi */
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .cart-section .container1 .products-grid .product-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    /* Rasm qutisini mobil uchun ixchamlashtirish */
+  }
+  .cart-section .container1 .products-grid .product-card .product-img-box {
+    height: 280px !important;
+    /* Telefonda rasm balandligi */
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  .cart-section .container1 .products-grid .product-card .product-img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .cart-section .container1 .products-grid .product-card {
+    /* Matn qismi */
+  }
+  .cart-section .container1 .products-grid .product-card .product-info {
+    padding: 0 16px !important;
+    margin-bottom: 12px !important;
+  }
+  .cart-section .container1 .products-grid .product-card .product-info .product-title {
+    font-size: 15px !important;
+    white-space: normal !important;
+    /* Uzun nomlar pastga tushishi uchun */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .cart-section .container1 .products-grid .product-card .product-info .product-desc {
+    font-size: 12px !important;
+    -webkit-line-clamp: 2 !important;
+  }
+  .cart-section .container1 .products-grid .product-card .product-info .product-price {
+    font-size: 16px !important;
+  }
+  .cart-section .container1 .products-grid .product-card {
+    /* "Add to Cart" tugmasi katakchaga moslashadi (fixed 335px olib tashlandi) */
+  }
+  .cart-section .container1 .products-grid .product-card .add-to-cart-btn {
+    width: calc(100% - 32px) !important;
+    /* Chetlari bilan bir xil turishi uchun */
+    margin: 0 16px 16px 16px !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+  }
+}
+/* ==========================================
+   FOOTER MOBILE RESPONSIVE STYLES
+   ========================================== */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 40px 0 20px 0 !important;
+    /* Desktopdagi 4 ta ustunli gridni telefonda 1 ta ustunli qilib o'zgartiramiz */
+  }
+  .site-footer .footer-container {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .site-footer .footer-col .footer-title {
+    font-size: 16px !important;
+    margin-bottom: 12px !important;
+  }
+  .site-footer .footer-col .footer-desc {
+    font-size: 13px !important;
+    margin-bottom: 15px !important;
+  }
+  .site-footer .footer-col .social-links {
+    gap: 16px !important;
+  }
+  .site-footer .footer-col {
+    /* Havolalar orasidagi masofani qisqartirish */
+  }
+  .site-footer .footer-col .footer-links li,
+  .site-footer .footer-col .footer-contact li {
+    margin-bottom: 10px !important;
+    font-size: 13px !important;
+  }
+  .site-footer {
+    /* Pastki copyright va policy qismi */
+  }
+  .site-footer .footer-bottom {
+    margin-top: 30px !important;
+    padding: 15px 20px !important;
+    border-top: 1px solid #1f2937 !important;
+  }
+  .site-footer .footer-bottom .bottom-content {
+    flex-direction: column !important;
+    gap: 15px !important;
+    text-align: center !important;
+    font-size: 12px !important;
+  }
+  .site-footer .footer-bottom .bottom-content .footer-policies {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+}
+/* ==========================================
+   CART PAGE MOBILE RESPONSIVE STYLES
+   ========================================== */
+@media (max-width: 768px) {
+  .cart-page {
+    padding: 20px 16px !important;
+  }
+  .cart-page .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .cart-page .cart-title {
+    font-size: 24px !important;
+    margin-bottom: 20px !important;
+  }
+  .cart-page .cart-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .cart-page .cart-content .cart-left {
+    width: 100% !important;
+  }
+  .cart-page .cart-content .cart-right {
+    width: 100% !important;
+  }
+  .cart-page .cart-item {
+    position: relative !important;
+    padding: 16px 0 !important;
+    gap: 12px !important;
+  }
+  .cart-page .cart-item .cart-item-img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .cart-page .cart-item .cart-item-info {
+    width: 100% !important;
+  }
+  .cart-page .cart-item .cart-item-info .cart-item-title {
+    font-size: 15px !important;
+    white-space: normal !important;
+  }
+  .cart-page .cart-item .cart-item-info .cart-item-price {
+    font-size: 13px !important;
+  }
+  .cart-page .cart-item .cart-item-info .cart-item-actions {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    margin-top: 6px !important;
+  }
+  .cart-page .cart-item .cart-item-total {
+    position: absolute !important;
+    top: 16px !important;
+    right: 0 !important;
+    font-size: 16px !important;
+  }
+  .cart-page .cart-actions-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 15px !important;
+  }
+  .cart-page .cart-actions-bottom .clear-cart-btn,
+  .cart-page .cart-actions-bottom .continue-btn {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+  .cart-page {
+    /* Order Summary bloki */
+  }
+  .cart-page .order-summary {
+    padding: 20px 16px !important;
+  }
+  .cart-page .order-summary .summary-title {
+    font-size: 18px !important;
+    margin-bottom: 15px !important;
+  }
+  .cart-page .order-summary .summary-row {
+    font-size: 15px !important;
+  }
+  .cart-page .order-summary .checkout-btn {
+    padding: 14px !important;
+    font-size: 15px !important;
+  }
+}
+/* ==========================================
+   EMPTY CART DESIGN STYLES
+   ========================================== */
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  min-height: 50vh;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+.empty-cart-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+.empty-cart-container p {
+  font-size: 15px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+  max-width: 320px;
+  line-height: 1.5;
+}
+.empty-cart-container .continue-shopping-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.empty-cart-container .continue-shopping-btn:hover {
+  background-color: #1d4ed8;
 }
 
 /*# sourceMappingURL=style.css.map */

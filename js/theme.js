@@ -39,27 +39,21 @@ export function setupThemeToggle() {
 }
 
 function applyTheme(theme) {
-    const root = document.documentElement;
+    const body = document.body;
 
     if (theme === "light") {
-        root.style.setProperty("--bg-color", "#ffffff");
-        root.style.setProperty("--text-color", "#111827");
-        root.classList.add("light-mode");
-        root.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+        body.classList.remove("dark-mode");
     } else if (theme === "dark") {
-        root.style.setProperty("--bg-color", "#0b0f19");
-        root.style.setProperty("--text-color", "#ffffff");
-        root.classList.add("dark-mode");
-        root.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+        body.classList.remove("light-mode");
     } else {
-        root.classList.remove("light-mode", "dark-mode");
+        body.classList.remove("light-mode", "dark-mode");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         if (prefersDark) {
-            root.style.setProperty("--bg-color", "#0b0f19");
-            root.style.setProperty("--text-color", "#ffffff");
+            body.classList.add("dark-mode");
         } else {
-            root.style.setProperty("--bg-color", "#ffffff");
-            root.style.setProperty("--text-color", "#111827");
+            body.classList.add("light-mode");
         }
     }
 
