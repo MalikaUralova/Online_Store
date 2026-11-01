@@ -1,8 +1,6 @@
 export function initLogin() {
     const loginForm = document.querySelector("#loginForm");
-
     if (!loginForm) return;
-
     loginForm.addEventListener("submit", function(e) {
         e.preventDefault();
 

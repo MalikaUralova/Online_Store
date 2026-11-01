@@ -76,7 +76,6 @@ function renderCart() {
     updateCartBadge();
 }
 
-// Clear Cart tugmasi uchun funksiya
 export function setupClearCart() {
     const clearCartBtn = document.getElementById("clearCartBtn");
     const cartRight = document.querySelector(".cart-right");
@@ -137,7 +136,6 @@ if (checkoutBtn) {
     });
 }
 
-// Boshlang'ich ishga tushirish
 document.addEventListener("DOMContentLoaded", () => {
     renderCart();
     setupClearCart();

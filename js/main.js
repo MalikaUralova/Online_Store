@@ -1,12 +1,11 @@
 import { setupThemeToggle } from "./theme.js";
 import { loadProducts, setupSearch, setupFilter } from "./products.js";
 
-// Funksiyani shu yerda chaqiramiz:
 setupThemeToggle();
 loadProducts();
 setupSearch();
 setupFilter();
-setupMobileMenu(); // <--- SHU QATORNI QO'SHING!
+setupMobileMenu(); 
 
 export function setupMobileMenu() {
     const mobileMenuBtn = document.getElementById("mobileMenuBtn");
@@ -18,7 +17,7 @@ export function setupMobileMenu() {
     if (!mobileMenuBtn || !mobileSidebar) return;
 
     function openMenu() {
-        updateSidebarCounts(); // Ochilganda wishlist va cart sonlarini yangilaydi
+        updateSidebarCounts(); 
         mobileSidebar.classList.add("open");
         if (sidebarOverlay) sidebarOverlay.classList.add("open");
     }
@@ -32,7 +31,6 @@ export function setupMobileMenu() {
     if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeMenu);
     if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeMenu);
 
-    // Sidebar ichidagi tema tugmasi bosilganda tema almashtirish
     if (sidebarThemeBtn) {
         sidebarThemeBtn.addEventListener("click", () => {
             const currentTheme = localStorage.getItem("theme") || "dark";
@@ -49,7 +47,6 @@ export function setupMobileMenu() {
     }
 }
 
-// Wishlist va Cart dagi mahsulotlar sonini sidebar ichiga uzatuvchi funksiya
 export function updateSidebarCounts() {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const cart = JSON.parse(localStorage.getItem("cart")) || [];

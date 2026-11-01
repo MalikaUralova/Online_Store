@@ -12,7 +12,6 @@ export function renderFullWishlistPage() {
         return;
     }
 
-    // Yuqori qism (Sarlavha va Clear Wishlist tugmasi)
     let html = `
         <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-family: 'Inter', sans-serif;">
             <h2 style="color: #fff; font-size: 22px; font-weight: 600;">My Wishlist (${wishlist.length} items)</h2>
@@ -49,7 +48,6 @@ export function renderFullWishlistPage() {
     html += `</div>`;
     productsContainer.innerHTML = html;
 
-    // Clear Wishlist tugmasi funksiyasi
     const clearBtn = document.getElementById("clearWishlistBtn");
     if (clearBtn) {
         clearBtn.addEventListener("click", () => {
@@ -60,7 +58,6 @@ export function renderFullWishlistPage() {
         });
     }
 
-    // Wishlistdan o'chirish tugmalari
     const removeBtns = document.querySelectorAll(".remove-from-wishlist");
     removeBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {

@@ -52,7 +52,6 @@ export function renderFullWishlistPage() {
     html += `</div>`;
     productsContainer.innerHTML = html;
 
-    // Clear Wishlist tugmasi
     const clearBtn = document.getElementById("clearWishlistBtn");
     if (clearBtn) {
         clearBtn.addEventListener("click", () => {
@@ -62,7 +61,6 @@ export function renderFullWishlistPage() {
         });
     }
 
-    // Wishlistdan o'chirish
     const removeBtns = document.querySelectorAll(".remove-from-wishlist");
     removeBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
@@ -94,5 +92,4 @@ export function renderFullWishlistPage() {
     });
 }
 
-// Sahifa ochilganda avtomatik ishga tushishi uchun:
 renderFullWishlistPage();
