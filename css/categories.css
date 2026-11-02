@@ -40,6 +40,7 @@ body nav .container1 .nav-flex .nav-text .store-p {
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 700;
+  font-size: 24px;
 }
 body nav .container1 .nav-flex .nav-icon-flex {
   display: flex;
@@ -52,6 +53,8 @@ body nav .container1 .nav-flex .nav-icon-flex .nav-icon1 {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
+  color: #fff;
 }
 body nav .container1 .nav-flex .nav-icon-flex .nav-icon1:hover {
   background-color: #1E293B;
@@ -69,6 +72,7 @@ body nav .container1 .nav-flex .nav-icon-flex .nav-icon1.theme-wrapper .theme-dr
   border: 1px solid #1E293B;
   border-radius: 12px;
   padding: 8px 0;
+  color: red;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
@@ -172,13 +176,15 @@ body nav .container1 .nav-flex .nav-icon-flex .nav-icon1.cart-wrapper {
 }
 body nav .container1 .nav-flex .nav-icon-flex .nav-icon1.cart-wrapper .cart-badge {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  display: flex;
+  align-items: center;
+  top: -3px;
+  right: -6px;
   background-color: #3B82F6;
-  color: #fff;
-  font-size: 11px;
+  color: #020817;
+  font-size: 12px;
   font-family: "Inter", sans-serif;
-  padding: 1px 5px;
+  padding: 3px 7px;
   border-radius: 10px;
   font-weight: 600;
 }
@@ -265,6 +271,8 @@ body nav .container1 .nav-flex .nav-icon-flex .svg-login {
   border-radius: 8px;
   padding: 8px 13px;
   border: 2px solid #1E293B;
+  text-decoration: none;
+  color: #fff;
 }
 body nav .container1 .nav-flex .nav-icon-flex .svg-login:hover {
   background-color: #1E293B;
@@ -337,7 +345,6 @@ body .site-footer {
   font-family: "Inter", sans-serif;
   border-top: 1px solid #1E293B;
   padding-top: 60px;
-  padding-bottom: 40px;
 }
 body .site-footer .footer-container {
   max-width: 1500px;

@@ -777,8 +777,9 @@ body nav .container1 .nav-flex .nav-text a:hover {
 }
 body nav .container1 .nav-flex .nav-text .store-p {
   font-family: "Inter", sans-serif;
-  font-size: 20px;
   font-weight: 700;
+  text-decoration: none;
+  font-size: 24px;
 }
 body nav .container1 .nav-flex .nav-icon-flex {
   display: flex;
@@ -1320,7 +1321,7 @@ body .login-section .login-card .login-form .form-group label {
 }
 body .login-section .login-card .login-form .form-group input {
   background-color: transparent;
-  border: 2px solid #1E293B;
+  border: 1px solid #1E293B;
   border-radius: 8px;
   padding: 12px 16px;
   color: #fff;
@@ -1336,14 +1337,14 @@ body .login-section .login-card .login-form .form-group input:focus {
 }
 body .login-section .login-card .login-form .form-group input:-webkit-autofill, body .login-section .login-card .login-form .form-group input:-webkit-autofill:hover, body .login-section .login-card .login-form .form-group input:-webkit-autofill:focus {
   -webkit-text-fill-color: #fff;
-  -webkit-box-shadow: 0 0 0px 1000px #1E293B inset;
+  -webkit-box-shadow: 0 0 0px 1000px #020817 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 body .login-section .login-card .login-form .login-submit-btn {
   border-radius: 8px;
   padding: 12px;
   background: #3B82F6;
-  color: #020817;
+  color: #fff;
   cursor: pointer;
   width: 100%;
   border: none;
@@ -1464,6 +1465,91 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a {
 body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   color: #fff;
 }
+body .cart-wrapper, body .wishlist-wrapper {
+  position: relative !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Badge (Doira ichidagi raqam) */
+}
+body .cart-wrapper .cart-badge, body .cart-wrapper .wishlist-badge, body .wishlist-wrapper .cart-badge, body .wishlist-wrapper .wishlist-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-sizing: border-box;
+  z-index: 10;
+  pointer-events: none;
+}
+body .cart-wrapper, body .wishlist-wrapper {
+  /* Dropdown Paneli */
+}
+body .cart-wrapper .cart-dropdown, body .cart-wrapper .wishlist-dropdown, body .wishlist-wrapper .cart-dropdown, body .wishlist-wrapper .wishlist-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  height: auto !important; /* Qat'iy balandlikni bekor qilamiz */
+  min-height: max-content;
+  background-color: #0b0f19;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s ease-in-out;
+  z-index: 1000;
+}
+body .cart-wrapper .cart-dropdown .cart-header h3, body .cart-wrapper .cart-dropdown .wishlist-header h3, body .cart-wrapper .wishlist-dropdown .cart-header h3, body .cart-wrapper .wishlist-dropdown .wishlist-header h3, body .wishlist-wrapper .cart-dropdown .cart-header h3, body .wishlist-wrapper .cart-dropdown .wishlist-header h3, body .wishlist-wrapper .wishlist-dropdown .cart-header h3, body .wishlist-wrapper .wishlist-dropdown .wishlist-header h3 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  font-family: "Inter", sans-serif;
+}
+body .cart-wrapper .cart-dropdown .dropdown-items-list, body .cart-wrapper .wishlist-dropdown .dropdown-items-list, body .wishlist-wrapper .cart-dropdown .dropdown-items-list, body .wishlist-wrapper .wishlist-dropdown .dropdown-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+body .cart-wrapper .cart-dropdown .view-btn, body .cart-wrapper .wishlist-dropdown .view-btn, body .wishlist-wrapper .cart-dropdown .view-btn, body .wishlist-wrapper .wishlist-dropdown .view-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+}
+body .cart-wrapper .cart-dropdown .view-btn:hover, body .cart-wrapper .wishlist-dropdown .view-btn:hover, body .wishlist-wrapper .cart-dropdown .view-btn:hover, body .wishlist-wrapper .wishlist-dropdown .view-btn:hover {
+  background-color: #1d4ed8;
+}
+body .cart-wrapper:hover .cart-dropdown, body .cart-wrapper:hover .wishlist-dropdown, body .wishlist-wrapper:hover .cart-dropdown, body .wishlist-wrapper:hover .wishlist-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
 .sidebar-overlay {
   position: fixed;
@@ -1489,7 +1575,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   width: 270px;
   height: 100vh;
   background-color: #050a14;
-  /* Rasmdagi quyuq to'q ko'k/qora fon */
   color: #ffffff;
   z-index: 999;
   padding: 24px 20px;
@@ -1590,7 +1675,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   position: fixed;
   top: 0;
   left: -300px;
-  /* Boshida ekrandan tashqarida yashiringan */
   width: 280px;
   height: 100vh;
   background-color: var(--bg-color, #0b0f19);
@@ -1605,7 +1689,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
 }
 .mobile-sidebar.open {
   left: 0 !important;
-  /* Ochilganda chapdan chiqadi */
 }
 .mobile-sidebar .sidebar-header {
   display: flex;
@@ -1655,7 +1738,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     justify-content: space-between;
   }
 }
-/* --- DESKTOP STYLES (Asosiy kodni to'g'rilash) --- */
 .search-section {
   background-color: #020817;
 }
@@ -1674,7 +1756,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   align-items: center;
   position: relative;
   flex: 1;
-  /* Fixed 1360px o'rniga moslashuvchan qilish */
 }
 .search-section .search-container .search-flex .search-input input {
   background-color: transparent;
@@ -1686,7 +1767,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   font-size: 16px;
   padding: 15px 10px 15px 50px;
   width: 100%;
-  /* Qutini to'liq kenglikda ushlash */
   box-sizing: border-box;
 }
 .search-section .search-container .search-flex .search-input input:focus {
@@ -1720,15 +1800,12 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   background-color: #1E293B;
 }
 
-/* --- MOBIL EKRANLARDA KONTEYNER CHETLARINI TO'G'RILASH --- */
 @media (max-width: 768px) {
-  /* Navbar konteyneriga yon tomonlardan bo'shliq beramiz */
   nav .container1 {
     padding-left: 10px !important;
     padding-right: 10px !important;
     box-sizing: border-box;
   }
-  /* "Online Store" sarlavhasi joylashgan konteynerga ham bo'shliq beramiz */
   .text-section .text-div {
     padding-left: 10px !important;
     padding-right: 10px !important;
@@ -1737,38 +1814,30 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   .text-section {
     border-bottom: none !important;
   }
-  /* Qidiruv va filtr qismi ham chiroyli turishi uchun */
   .search-section .search-container {
     padding-top: 20px;
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
-  /* --- "ONLINE STORE" TAGIDAGI CHIZIQNI OLIB TASHLASH --- */
   .text-section,
   .search-section {
     border-bottom: none !important;
   }
-  /* Agar chiziq qaysidir boshqa klass yoki elementga tegishli bo'lsa, umumiy tozalash: */
   .text-section {
     border: none !important;
     box-shadow: none !important;
   }
 }
 @media (max-width: 768px) {
-  /* 1. Sarlavha qismi (Online Store) */
   .text-section .text-div h1 {
     padding: 24px 0 16px 0 !important;
     font-size: 28px !important;
     font-weight: 700;
   }
-  /* 2. Qidiruv va Filter bo'limi */
   .search-section .search-container .search-flex {
     flex-direction: column !important;
-    /* Elementlarni ustma-ust joylashtirish */
     align-items: flex-start !important;
-    /* Chap tomonga tekislash */
     gap: 12px !important;
-    /* Qidiruv qutisi telefonda 100% bo'ladi */
   }
   .search-section .search-container .search-flex .search-input {
     width: 100% !important;
@@ -1783,12 +1852,8 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     width: 18px !important;
     height: 18px !important;
   }
-  .search-section .search-container .search-flex {
-    /* Filter tugmasi rasmga o'xshab chap tomonda ixcham turadi */
-  }
   .search-section .search-container .search-flex .filter {
     width: auto !important;
-    /* To'liq kenglikka cho'zilib ketmaydi */
     padding: 8px 16px !important;
     border-radius: 8px !important;
   }
@@ -1800,9 +1865,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     height: 16px !important;
   }
 }
-/* ==========================================
-   MAHSULOTLAR KARTASINING MOBIL UCHUN MEDIASI
-   ========================================== */
 @media (max-width: 768px) {
   .cart-section {
     padding: 20px 0 !important;
@@ -1812,7 +1874,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     padding-right: 16px !important;
   }
   .cart-section .container1 .products-grid {
-    /* Telefonda grid 4 tadan 1 taga o'zgaradi va har bir qatorda 1 tadan chiqadi */
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
@@ -1821,11 +1882,9 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     max-width: 100% !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
-    /* Rasm qutisini mobil uchun ixchamlashtirish */
   }
   .cart-section .container1 .products-grid .product-card .product-img-box {
     height: 280px !important;
-    /* Telefonda rasm balandligi */
     width: 100% !important;
     margin-bottom: 12px !important;
   }
@@ -1834,9 +1893,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     height: 100% !important;
     object-fit: cover !important;
   }
-  .cart-section .container1 .products-grid .product-card {
-    /* Matn qismi */
-  }
   .cart-section .container1 .products-grid .product-card .product-info {
     padding: 0 16px !important;
     margin-bottom: 12px !important;
@@ -1844,7 +1900,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   .cart-section .container1 .products-grid .product-card .product-info .product-title {
     font-size: 15px !important;
     white-space: normal !important;
-    /* Uzun nomlar pastga tushishi uchun */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -1857,25 +1912,17 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   .cart-section .container1 .products-grid .product-card .product-info .product-price {
     font-size: 16px !important;
   }
-  .cart-section .container1 .products-grid .product-card {
-    /* "Add to Cart" tugmasi katakchaga moslashadi (fixed 335px olib tashlandi) */
-  }
   .cart-section .container1 .products-grid .product-card .add-to-cart-btn {
     width: calc(100% - 32px) !important;
-    /* Chetlari bilan bir xil turishi uchun */
     margin: 0 16px 16px 16px !important;
     padding: 12px !important;
     font-size: 14px !important;
     box-sizing: border-box !important;
   }
 }
-/* ==========================================
-   FOOTER MOBILE RESPONSIVE STYLES
-   ========================================== */
 @media (max-width: 768px) {
   .site-footer {
     padding: 40px 0 20px 0 !important;
-    /* Desktopdagi 4 ta ustunli gridni telefonda 1 ta ustunli qilib o'zgartiramiz */
   }
   .site-footer .footer-container {
     grid-template-columns: 1fr !important;
@@ -1894,16 +1941,10 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   .site-footer .footer-col .social-links {
     gap: 16px !important;
   }
-  .site-footer .footer-col {
-    /* Havolalar orasidagi masofani qisqartirish */
-  }
   .site-footer .footer-col .footer-links li,
   .site-footer .footer-col .footer-contact li {
     margin-bottom: 10px !important;
     font-size: 13px !important;
-  }
-  .site-footer {
-    /* Pastki copyright va policy qismi */
   }
   .site-footer .footer-bottom {
     margin-top: 30px !important;
@@ -1922,9 +1963,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     gap: 15px !important;
   }
 }
-/* ==========================================
-   CART PAGE MOBILE RESPONSIVE STYLES
-   ========================================== */
 @media (max-width: 768px) {
   .cart-page {
     padding: 20px 16px !important;
@@ -1989,9 +2027,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     padding: 12px !important;
     box-sizing: border-box !important;
   }
-  .cart-page {
-    /* Order Summary bloki */
-  }
   .cart-page .order-summary {
     padding: 20px 16px !important;
   }
@@ -2007,9 +2042,6 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
     font-size: 15px !important;
   }
 }
-/* ==========================================
-   EMPTY CART DESIGN STYLES
-   ========================================== */
 .empty-cart-container {
   display: flex;
   flex-direction: column;

@@ -48,6 +48,7 @@ body {
                         font-family: "Inter", sans-serif;
                         font-size: 20px;
                         font-weight: 700;
+                        font-size:24px; 
                     }
                 }
 
@@ -60,11 +61,14 @@ body {
                         padding: 10px;
                         border-radius: 5px;
                         cursor: pointer;
+                        text-decoration: none;
+                        color: $white-color;
 
                         &:hover {
                             background-color: $icon-hover;
                         }
                     }
+
 
                     .nav-icon1.theme-wrapper {
                         position: relative;
@@ -79,6 +83,7 @@ body {
                             border: 1px solid $icon-hover;
                             border-radius: 12px;
                             padding: 8px 0;
+                            color: red;
                             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
                             opacity: 0;
                             visibility: hidden;
@@ -197,13 +202,15 @@ body {
 
                         .cart-badge {
                             position: absolute;
-                            top: 2px;
-                            right: 2px;
+                            display: flex;
+                            align-items: center;
+                            top: -3px;
+                            right: -6px;
                             background-color: $btn-color;
-                            color: $white-color;
-                            font-size: 11px;
+                            color: $black-color;
+                            font-size: 12px;
                             font-family: "Inter", sans-serif;
-                            padding: 1px 5px;
+                            padding: 3px 7px;
                             border-radius: 10px;
                             font-weight: 600;
                         }
@@ -298,6 +305,8 @@ body {
                         border-radius: 8px;
                         padding: 8px 13px;
                         border: 2px solid $icon-hover;
+                        text-decoration: none;
+                        color: $white-color;
 
                         &:hover {
                             background-color: $icon-hover;
@@ -309,6 +318,7 @@ body {
                             color: $white-color;
                         }
                     }
+
                 }
             }
         }
@@ -388,7 +398,6 @@ body {
         font-family: "Inter", sans-serif;
         border-top: 1px solid $icon-hover;
         padding-top: 60px;
-        padding-bottom: 40px;
 
         .footer-container {
             @include container;
@@ -495,9 +504,9 @@ body {
         }
     }
 
-
-
 }
+
+
 
 
 .sidebar-overlay {

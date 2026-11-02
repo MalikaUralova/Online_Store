@@ -1,10 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .wishlist-page-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: calc(100vh - 250px);
+        }
+
+        .wishlist-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .wishlist-top-bar h1 {
+            color: #ffffff;
+            font-size: 24px;
+            font-family: "Inter", sans-serif;
+            margin: 0;
+        }
+
+        .clear-wishlist-btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .clear-wishlist-btn:hover {
+            background-color: #1f2937;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .wishlist-card {
+            background-color: #0b0f19;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .wishlist-img-box {
+            width: 100%;
+            height: 280px;
+            background-color: #f3f4f6;
+            /* Rasm yuklanguncha fon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .wishlist-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .wishlist-card-content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wishlist-title {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .wishlist-price {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: "Inter", sans-serif;
+            margin: 0 0 12px 0;
+        }
+
+        .wishlist-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .add-to-cart-action-btn {
+            flex: 1;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: "Inter", sans-serif;
+            transition: background-color 0.2s;
+        }
+
+        .add-to-cart-action-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .delete-item-btn {
+            background-color: transparent;
+            border: 1px solid #1f2937;
+            color: #94a3b8;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .delete-item-btn:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+    </style>
 </head>
 
 <body style="background-color: #0b0f19; color: #fff; margin: 0; font-family: 'Inter', sans-serif;">
@@ -13,10 +164,10 @@
         <div class="container1">
             <div class="nav-flex">
                 <div class="nav-text">
-                    <p class="store-p"><a href="../index.html">Store</a></p>
+                    <p><a class="store-p" href="../index.html">Store</a></p>
                     <p><a href="../index.html">Home</a></p>
                     <p><a href="../index.html">Products</a></p>
-                    <p><a href="./categories.html">Categories</a></p>
+                    <p><a href="../pages/categories.html">Categories</a></p>
                 </div>
                 <div class="nav-icon-flex">
                     <div class="nav-icon">
@@ -52,7 +203,7 @@
                                         <p class="item-price">$15.99</p>
                                     </div>
                                 </div>
-                                <a href="./pages/wishlist.html" class="view-wishlist-page-btn"
+                                <a href="../pages/wishlist.html" class="view-wishlist-page-btn"
                                     style="display: block; text-align: center; background-color: #2563eb; color: #fff; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif;">
                                     View Wishlist
                                 </a>
@@ -60,7 +211,7 @@
                         </div>
                     </div>
                     <div class="nav-icon">
-                        <a href="./pages/card.html" class="nav-icon1 cart-wrapper">
+                        <a href="../pages/card.html" class="nav-icon1 cart-wrapper">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V15H18.4433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z">
@@ -83,7 +234,7 @@
                             </div>
                         </a>
                     </div>
-                    <a href="./pages/login.html" class="svg-login">
+                    <a href="../pages/login.html" class="svg-login">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z">
@@ -91,6 +242,7 @@
                         </svg>
                         <p>Login</p>
                     </a>
+
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -105,132 +257,109 @@
 
     </nav>
 
-    <div class="container" style="padding: 40px 20px; max-width: 1500px; margin: 0 auto;">
-        <a href="../index.html"
-            style="color: #94a3b8; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; font-size: 14px;">
-            ← Back to products
-        </a>
-        <div id="productDetailsContainer"></div>
+    <div class="wishlist-page-container">
+        <div class="wishlist-top-bar">
+            <h1 id="wishlistTitle">My Wishlist (0 items)</h1>
+            <button id="clearWishlistBtn" class="clear-wishlist-btn" style="display: none;"
+                onclick="clearAllWishlist()">Clear Wishlist</button>
+        </div>
+
+        <div class="wishlist-grid" id="wishlistContainer">
+        </div>
+
+        <div id="emptyWishlistMessage"
+            style="display: none; text-align: center; padding: 80px 20px; font-family: 'Inter', sans-serif;">
+            <h2 style="color: #ffffff; font-size: 28px; font-weight: 700; margin-bottom: 12px;">Your Wishlist is Empty
+            </h2>
+            <p style="color: #94a3b8; font-size: 16px; margin-bottom: 24px;">Add some products to your wishlist to see
+                them here.</p>
+            <a href="../index.html"
+                style="display: inline-block; background-color: #3b82f6; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; transition: background-color 0.2s;">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
     </div>
 
+
     <script>
-        const productId = Number(localStorage.getItem("selectedProductId")) || 2;
-        const detailsContainer = document.querySelector("#productDetailsContainer");
+        document.addEventListener("DOMContentLoaded", () => {
+            renderWishlistPage();
+        });
 
-        function renderDetailsPage() {
-            fetch(`https://fakestoreapi.com/products/${productId}`)
-                .then(res => res.json())
-                .then(product => {
-                    const { title, price, description, image, category, rating } = product;
+        function renderWishlistPage() {
+            const wishlistContainer = document.getElementById("wishlistContainer");
+            const emptyMessage = document.getElementById("emptyWishlistMessage");
+            const wishlistTitle = document.getElementById("wishlistTitle");
+            const clearBtn = document.getElementById("clearWishlistBtn");
 
-                    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-                    const isLiked = wishlist.some(p => p.id === product.id);
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-                    detailsContainer.innerHTML = `
-                        <div style="display: flex; gap: 60px; align-items: flex-start; flex-wrap: wrap;">
-                            <!-- Chap tomon: Rasm bloki (to'q fonli card ichida) -->
-                            <div style="background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 40px; flex: 1; min-width: 320px; display: flex; justify-content: center; align-items: center; height: 500px;">
-                                <img src="${image}" alt="${title}" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-                            </div>
+            if (wishlist.length === 0) {
+                wishlistContainer.innerHTML = "";
+                emptyMessage.style.display = "block";
+                if (wishlistTitle) wishlistTitle.style.display = "none";
+                if (clearBtn) clearBtn.style.display = "none";
+                return;
+            }
 
-                            <!-- O'ng tomon: Barcha ma'lumotlar va tugmalar -->
-                            <div style="flex: 1; min-width: 320px;">
-                                <span style="background: #1f2937; color: #94a3b8; font-size: 12px; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; font-weight: 500;">${category}</span>
-                                
-                                <h1 style="font-size: 26px; font-weight: 600; margin: 12px 0 10px 0; color: #fff;">${title}</h1>
-                                
-                                <!-- Reyting -->
-                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 14px; color: #94a3b8;">
-                                    <span style="color: #fbbf24;">★★★★☆</span> 
-                                    <span>${rating ? rating.rate : 4.1} (${rating ? rating.count : 259} reviews)</span>
-                                </div>
+            emptyMessage.style.display = "none";
+            if (wishlistTitle) {
+                wishlistTitle.style.display = "block";
+                wishlistTitle.textContent = `My Wishlist (${wishlist.length} items)`;
+            }
+            if (clearBtn) clearBtn.style.display = "block";
 
-                                <!-- Narx -->
-                                <div style="font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 20px;">$${price}</div>
-
-                                <!-- Tablar (Description, Details, Shipping) -->
-                                <div style="display: flex; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid #1f2937; padding-bottom: 10px;">
-                                    <button style="background: #1f2937; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer;">Description</button>
-                                    <button style="background: transparent; color: #94a3b8; border: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer;">Details</button>
-                                    <button style="background: transparent; color: #94a3b8; border: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer;">Shipping</button>
-                                </div>
-
-                                <!-- Tavsif matni -->
-                                <p style="color: #94a3b8; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">${description}</p>
-
-                                <!-- Miqdor (Quantity) boshqaruvi -->
-                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                                    <span style="font-size: 14px; color: #94a3b8; font-weight: 500;">Quantity</span>
-                                    <div style="display: flex; align-items: center; background: #111827; border: 1px solid #1f2937; border-radius: 8px; overflow: hidden;">
-                                        <button onclick="decreaseQty()" style="background: transparent; border: none; color: #fff; padding: 8px 14px; cursor: pointer; font-size: 16px;">-</button>
-                                        <span id="productQty" style="padding: 0 10px; font-weight: 600; color: #fff;">1</span>
-                                        <button onclick="increaseQty()" style="background: transparent; border: none; color: #fff; padding: 8px 14px; cursor: pointer; font-size: 16px;">+</button>
-                                    </div>
-                                </div>
-
-                                <!-- Pastki tugmalar: Add to Cart va Like -->
-                                <div style="display: flex; gap: 12px; align-items: center;">
-                                    <button onclick="addToCartDetail(${product.id})" style="flex: 1; background-color: #2563eb; color: #fff; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                        Add to Cart
-                                    </button>
-                                    <button onclick="toggleWishlistDetail(${product.id})" style="background: #111827; border: 1px solid #1f2937; color: ${isLiked ? '#ef4444' : '#94a3b8'}; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 46px; height: 46px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="${isLiked ? '#ef4444' : 'none'}" stroke="${isLiked ? 'none' : 'currentColor'}" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
+            wishlistContainer.innerHTML = wishlist.map((product, index) => `
+        <div class="wishlist-card">
+            <div class="wishlist-img-box">
+                <img src="${product.image}" alt="${product.title}">
+            </div>
+            <div class="wishlist-card-content">
+                <h3 class="wishlist-title" title="${product.title}">${product.title}</h3>
+                <p class="wishlist-price">$${product.price.toFixed(2)}</p>
+                <div class="wishlist-actions">
+                    <button class="add-to-cart-action-btn" onclick="moveProductToCart(${product.id})">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        Add to Cart
+                    </button>
+                    <button class="delete-item-btn" onclick="removeItem(${index})" title="Remove">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join("");
         }
 
-        window.decreaseQty = function () {
-            const qtyEl = document.querySelector("#productQty");
-            let qty = parseInt(qtyEl.textContent);
-            if (qty > 1) qtyEl.textContent = qty - 1;
-        };
+        window.removeItem = function (index) {
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            wishlist.splice(index, 1);
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            renderWishlistPage();
+        }
 
-        window.increaseQty = function () {
-            const qtyEl = document.querySelector("#productQty");
-            let qty = parseInt(qtyEl.textContent);
-            qtyEl.textContent = qty + 1;
-        };
+        window.clearAllWishlist = function () {
+            localStorage.removeItem("wishlist");
+            renderWishlistPage();
+        }
 
-        window.addToCartDetail = function (id) {
-            const qty = parseInt(document.querySelector("#productQty").textContent);
+        window.moveProductToCart = function (productId) {
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            fetch(`https://fakestoreapi.com/products/${id}`)
-                .then(res => res.json())
-                .then(product => {
-                    const existing = cart.find(p => p.id === id);
-                    if (existing) {
-                        existing.quantity = (Number(existing.quantity) || 1) + qty;
-                    } else {
-                        cart.push({ ...product, quantity: qty });
-                    }
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    alert("Product added to cart!");
-                });
-        };
-
-        window.toggleWishlistDetail = function (id) {
-            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-            fetch(`https://fakestoreapi.com/products/${id}`)
-                .then(res => res.json())
-                .then(product => {
-                    const index = wishlist.findIndex(p => p.id === id);
-                    if (index > -1) {
-                        wishlist.splice(index, 1);
-                    } else {
-                        wishlist.push(product);
-                    }
-                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-                    renderDetailsPage();
-                });
-        };
-
-        renderDetailsPage();
+            const product = wishlist.find(p => p.id === productId);
+            if (product) {
+                const existing = cart.find(p => p.id === productId);
+                if (existing) {
+                    existing.quantity = (Number(existing.quantity) || 1) + 1;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert("Product added to cart!");
+            }
+        }
     </script>
 
 
