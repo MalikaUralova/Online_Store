@@ -1465,19 +1465,22 @@ body .site-footer .footer-bottom .bottom-content .footer-policies a {
 body .site-footer .footer-bottom .bottom-content .footer-policies a:hover {
   color: #fff;
 }
-body .cart-wrapper, body .wishlist-wrapper {
+body .cart-wrapper,
+body .wishlist-wrapper {
   position: relative !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Badge (Doira ichidagi raqam) */
 }
-body .cart-wrapper .cart-badge, body .cart-wrapper .wishlist-badge, body .wishlist-wrapper .cart-badge, body .wishlist-wrapper .wishlist-badge {
+body .cart-wrapper .cart-badge,
+body .cart-wrapper .wishlist-badge,
+body .wishlist-wrapper .cart-badge,
+body .wishlist-wrapper .wishlist-badge {
   position: absolute;
   top: -6px;
   right: -6px;
   background-color: #3b82f6;
-  color: #ffffff;
+  color: #020817;
   font-size: 11px;
   font-weight: 700;
   font-family: "Inter", sans-serif;
@@ -1492,15 +1495,20 @@ body .cart-wrapper .cart-badge, body .cart-wrapper .wishlist-badge, body .wishli
   z-index: 10;
   pointer-events: none;
 }
-body .cart-wrapper, body .wishlist-wrapper {
+body .cart-wrapper,
+body .wishlist-wrapper {
   /* Dropdown Paneli */
 }
-body .cart-wrapper .cart-dropdown, body .cart-wrapper .wishlist-dropdown, body .wishlist-wrapper .cart-dropdown, body .wishlist-wrapper .wishlist-dropdown {
+body .cart-wrapper .cart-dropdown,
+body .cart-wrapper .wishlist-dropdown,
+body .wishlist-wrapper .cart-dropdown,
+body .wishlist-wrapper .wishlist-dropdown {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
   width: 320px;
-  height: auto !important; /* Qat'iy balandlikni bekor qilamiz */
+  height: auto !important;
+  /* Qat'iy balandlikni bekor qilamiz */
   min-height: max-content;
   background-color: #0b0f19;
   border: 1px solid #1f2937;
@@ -1514,20 +1522,33 @@ body .cart-wrapper .cart-dropdown, body .cart-wrapper .wishlist-dropdown, body .
   transition: all 0.25s ease-in-out;
   z-index: 1000;
 }
-body .cart-wrapper .cart-dropdown .cart-header h3, body .cart-wrapper .cart-dropdown .wishlist-header h3, body .cart-wrapper .wishlist-dropdown .cart-header h3, body .cart-wrapper .wishlist-dropdown .wishlist-header h3, body .wishlist-wrapper .cart-dropdown .cart-header h3, body .wishlist-wrapper .cart-dropdown .wishlist-header h3, body .wishlist-wrapper .wishlist-dropdown .cart-header h3, body .wishlist-wrapper .wishlist-dropdown .wishlist-header h3 {
+body .cart-wrapper .cart-dropdown .cart-header h3,
+body .cart-wrapper .cart-dropdown .wishlist-header h3,
+body .cart-wrapper .wishlist-dropdown .cart-header h3,
+body .cart-wrapper .wishlist-dropdown .wishlist-header h3,
+body .wishlist-wrapper .cart-dropdown .cart-header h3,
+body .wishlist-wrapper .cart-dropdown .wishlist-header h3,
+body .wishlist-wrapper .wishlist-dropdown .cart-header h3,
+body .wishlist-wrapper .wishlist-dropdown .wishlist-header h3 {
   color: #ffffff;
   font-size: 15px;
   font-weight: 600;
   margin: 0 0 12px 0;
   font-family: "Inter", sans-serif;
 }
-body .cart-wrapper .cart-dropdown .dropdown-items-list, body .cart-wrapper .wishlist-dropdown .dropdown-items-list, body .wishlist-wrapper .cart-dropdown .dropdown-items-list, body .wishlist-wrapper .wishlist-dropdown .dropdown-items-list {
+body .cart-wrapper .cart-dropdown .dropdown-items-list,
+body .cart-wrapper .wishlist-dropdown .dropdown-items-list,
+body .wishlist-wrapper .cart-dropdown .dropdown-items-list,
+body .wishlist-wrapper .wishlist-dropdown .dropdown-items-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 14px;
 }
-body .cart-wrapper .cart-dropdown .view-btn, body .cart-wrapper .wishlist-dropdown .view-btn, body .wishlist-wrapper .cart-dropdown .view-btn, body .wishlist-wrapper .wishlist-dropdown .view-btn {
+body .cart-wrapper .cart-dropdown .view-btn,
+body .cart-wrapper .wishlist-dropdown .view-btn,
+body .wishlist-wrapper .cart-dropdown .view-btn,
+body .wishlist-wrapper .wishlist-dropdown .view-btn {
   display: block;
   width: 100%;
   text-align: center;
@@ -1542,10 +1563,16 @@ body .cart-wrapper .cart-dropdown .view-btn, body .cart-wrapper .wishlist-dropdo
   box-sizing: border-box;
   transition: background-color 0.2s;
 }
-body .cart-wrapper .cart-dropdown .view-btn:hover, body .cart-wrapper .wishlist-dropdown .view-btn:hover, body .wishlist-wrapper .cart-dropdown .view-btn:hover, body .wishlist-wrapper .wishlist-dropdown .view-btn:hover {
+body .cart-wrapper .cart-dropdown .view-btn:hover,
+body .cart-wrapper .wishlist-dropdown .view-btn:hover,
+body .wishlist-wrapper .cart-dropdown .view-btn:hover,
+body .wishlist-wrapper .wishlist-dropdown .view-btn:hover {
   background-color: #1d4ed8;
 }
-body .cart-wrapper:hover .cart-dropdown, body .cart-wrapper:hover .wishlist-dropdown, body .wishlist-wrapper:hover .cart-dropdown, body .wishlist-wrapper:hover .wishlist-dropdown {
+body .cart-wrapper:hover .cart-dropdown,
+body .cart-wrapper:hover .wishlist-dropdown,
+body .wishlist-wrapper:hover .cart-dropdown,
+body .wishlist-wrapper:hover .wishlist-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
