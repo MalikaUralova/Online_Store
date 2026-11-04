@@ -15,7 +15,6 @@ export function renderFullWishlistPage() {
         `;
         return;
     }
-
     let html = `
         <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-family: 'Inter', sans-serif;">
             <h2 style="color: #fff; font-size: 22px; font-weight: 600;">My Wishlist (${wishlist.length} items)</h2>
