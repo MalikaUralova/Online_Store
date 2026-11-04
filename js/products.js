@@ -56,6 +56,7 @@ export function renderProducts(products) {
             </div>
         `;
         return;
+        
     }
 
     products.forEach(function (item) {
